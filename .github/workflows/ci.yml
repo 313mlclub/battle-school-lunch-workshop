@@ -14,11 +14,11 @@ jobs:
     name: TypeScript
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         if: ${{ hashFiles('frontend/package-lock.json') != '' }}
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
           cache-dependency-path: frontend/package-lock.json
       - name: Install dependencies
@@ -41,8 +41,8 @@ jobs:
     name: Python
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         if: ${{ hashFiles('backend/pyproject.toml') != '' }}
         with:
           python-version: "3.12"
@@ -66,7 +66,7 @@ jobs:
     name: Docker Compose
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Validate Compose configuration
         if: ${{ hashFiles('compose.yml', 'compose.yaml', 'docker-compose.yml', 'docker-compose.yaml') != '' }}
         run: docker compose config
