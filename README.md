@@ -27,7 +27,8 @@ NEIS 공개 API를 활용해 초중고 급식 메뉴를 조회하고 AI 에이�
 > [!TIP]
 > 바로 시작하려면 [이 템플릿으로 새 저장소를 만드세요](https://github.com/new?template_name=battle-school-lunch-workshop&template_owner=devkimchi).
 
-완성된 애플리케이션을 직접 실행하거나 구현 결과를 비교하려면 [데모 앱 리포지토리](https://github.com/devkimchi/battle-school-lunch)를 참고하세요.
+> [!NOTE]
+> 완성된 애플리케이션을 직접 실행하거나 구현 결과를 비교하려면 [데모 앱 리포지토리](https://github.com/devkimchi/battle-school-lunch)를 참고하세요.
 
 ## 커리큘럼
 
