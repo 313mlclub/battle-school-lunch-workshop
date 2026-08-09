@@ -1,6 +1,6 @@
 # 개발 환경 설정
 
-이 문서에서는 이 워크샵을 진행하기 위해 필요한 개발 환경을 설정합니다.
+이 세션에서는 이 워크샵을 진행하기 위해 필요한 개발 환경을 설정합니다.
 
 ## 개발 도구 설치
 
@@ -12,6 +12,7 @@
 - [GitHub Copilot CLI](https://gh.io/copilot-cli)
 - [GitHub CLI](https://gh.io/cli)
 
+> [!NOTE]
 > 이미 설치가 되어 있다면, 가장 최신 버전으로 업데이트해 주세요.
 
 ### Azure 관련
@@ -19,6 +20,7 @@
 - [Azure CLI](https://aka.ms/az-cli)
 - [Azure Developer CLI](https://aka.ms/azd-cli)
 
+> [!NOTE]
 > 이미 설치가 되어 있다면, 가장 최신 버전으로 업데이트해 주세요.
 
 ## 개발 도구 로그인
@@ -57,6 +59,8 @@
     gh auth status
     ```
 
+   로그인 한 GitHub ID가 보여야 합니다.
+
 ### Azure CLI
 
 1. 아래 명령어를 통해 로그인합니다.
@@ -77,7 +81,7 @@
     az account show
     ```
 
-   > 로그인 한 테넌트 및 구독 정보가 보여야 합니다.
+   로그인 한 테넌트 및 구독 정보가 보여야 합니다.
 
 ### Azure Developer CLI
 
@@ -99,7 +103,7 @@
     azd auth login --check-status
     ```
 
-   > 로그인 한 계정이 보여야 합니다.
+   로그인 한 계정이 보여야 합니다.
 
 ## 워크샵 리포지토리 생성
 

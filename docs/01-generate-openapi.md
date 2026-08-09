@@ -1,6 +1,6 @@
 # `openapi.json` 명세 생성하기
 
-현재 NEIS에서는 공개 API 정보를 엑셀파일의 형태로 제공하고 있습니다. 이 엑셀 파일을 읽어 우리 앱에서 사용할 수 있는 OpenAPI 명세 문서로 바꿔야 합니다. 이 문서에서는 Copilot app의 기능을 이용해서 엑셀파일을 `openapi.json` 문서로 변환합니다.
+현재 NEIS에서는 공개 API 정보를 엑셀파일의 형태로 제공하고 있습니다. 이 엑셀 파일을 읽어 우리 앱에서 사용할 수 있는 OpenAPI 명세 문서로 바꿔야 합니다. 이 세션에서는 Copilot app의 기능을 이용해서 엑셀파일을 `openapi.json` 문서로 변환합니다.
 
 > [!NOTE]
 > 현재 보이는 스크린샷은 시간이 지나면서 UI 업데이트로 인해 현재 시점과 다를 수 있습니다.
@@ -38,7 +38,7 @@
    엑셀파일에 정의되어 있는 모든 엔드포인트를 openapi.json 명세 문서로 변환시켜줘.
    ```
 
-1. 작업이 끝나면 아래와 같이 `openapi.json` 파일이 만들어졌습니다.
+1. 작업이 끝나면 아래와 같이 `openapi.json` 파일이 만들어집니다.
 
    ![`openapi.json` 파일 생성](./images/01-generate-openapi-04.jpg)
 
@@ -52,19 +52,17 @@
 
    ![API 키 입력 요청 1](./images/01-generate-openapi-05.jpg)
 
-
     ```text
     실제 API 키 없이 기본키로 조회해 줘.
     ```
 
    ![API 키 입력 요청 2](./images/01-generate-openapi-06.jpg)
 
-1. 인증키 없이는 작동하지 않는다는 메시지를 반환합니다. `openapi.json` 명세가 제대로 작동하는 것을 의미합니다. 이제 오른쪽 위의 "Create PR" 버튼을 클릭해서 방금 작업한 내용을 바탕으로 PR을 생성합니다.
+1. 인증키 없이는 작동하지 않는다는 메시지를 반환합니다. `openapi.json` 명세가 제대로 작동하는 것을 의미합니다. 오른쪽 위의 "Create PR" 버튼을 클릭해서 방금 작업한 내용을 바탕으로 PR을 생성합니다.
 
    ![PR 생성하기](./images/01-generate-openapi-07.jpg)
 
-
-1. PR이 만들어졌고, 이제 머지할 준비가 끝났습니다. "Ready to merge" 버튼을 클릭합니다.
+1. PR이 만들어졌고, 머지할 준비가 끝났습니다. "Ready to merge" 버튼을 클릭합니다.
 
    ![PR 머지 준비 완료](./images/01-generate-openapi-08.jpg)
 
@@ -72,10 +70,10 @@
 
    ![PR 머지](./images/01-generate-openapi-09.jpg)
 
-1. 이제 머지가 완료된 것을 확인합니다.
+1. 머지가 완료된 것을 확인합니다.
 
    ![PR 머지 완료](./images/01-generate-openapi-10.jpg)
 
 ---
 
-이제 `openapi.json` 명세 문서를 생성했습니다. [`AGENTS.md` 문서 생성하기](./02-generate-agents-md.md)로 넘어가세요.
+openapi.json` 명세 문서를 생성했습니다. [`AGENTS.md` 문서 생성하기](./02-generate-agents-md.md)로 넘어가세요.
