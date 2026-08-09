@@ -109,7 +109,7 @@
 
 워크샵 리포지토리는 템플릿으로 설정해 두었으므로 포크하지 않고 직접 내 계정에 리포지토리를 생성할 수 있습니다.
 
-1. [`https://github.com/devkimchi/battle-school-lunch`](https://github.com/devkimchi/battle-school-lunch) 리포지토리를 방문합니다.
+1. [`https://github.com/devkimchi/battle-school-lunch-workshop`](https://github.com/devkimchi/battle-school-lunch-workshop) 리포지토리를 방문합니다.
 1. 오른쪽 위의 "Use this template" 버튼을 클릭한 후 "Create a new repository" 메뉴를 클릭합니다.
 
    ![템플릿 기반 새 리포지토리 만들기 1](./images/00-setup-01.jpg)

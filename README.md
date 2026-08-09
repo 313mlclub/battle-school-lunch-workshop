@@ -1,102 +1,74 @@
-# 급식배틀: 초중고 급식 메뉴 조회 및 분석 앱
+# 급식배틀: GitHub Copilot 활용 초중고 급식 메뉴 조회 및 분석 앱 개발 워크숍
 
-NEIS 공개 API를 활용한 초중고 급식 메뉴 조회 및 분석 웹 애플리케이션입니다.
+NEIS 공개 API를 활용해 초중고 급식 메뉴를 조회하고 AI 에이전트로 분석하는 웹 애플리케이션을 단계별로 구현하는 워크숍입니다. GitHub Copilot과 함께 요구사항 및 API 명세 작성부터 앱 개발, Azure 배포, MCP 서버와 멀티 에이전트 워크플로우 구현까지 진행합니다.
 
-<!--
-## 주요 기능
+[워크숍 시작하기](docs/00-setup.md) | [전체 커리큘럼 보기](#커리큘럼) | [데모 앱 리포지토리](https://github.com/devkimchi/battle-school-lunch) | [템플릿으로 저장소 만들기](https://github.com/new?template_name=battle-school-lunch-workshop&template_owner=devkimchi)
 
-- 학교 이름의 일부로 학교를 검색합니다.
-- 학교와 조회할 날짜 범위를 선택합니다.
-- 날짜별 중식 메뉴와 조회 결과 없음 또는 API 오류 상태를 표시합니다.
-- 브라우저에서 NEIS API를 직접 호출하지 않고 Python API를 통해 연동합니다.
-- React 프론트엔드와 Python 백엔드를 Docker Compose로 함께 실행합니다.
+## 워크숍에서 만드는 것
 
-## 아키텍처
+- 학교와 날짜 범위를 기준으로 급식 메뉴를 조회하는 웹 애플리케이션
+- NEIS 공개 API를 연동하는 백엔드와 사용자 인터페이스
+- Azure 배포 및 GitHub Actions 기반 테스트·배포 자동화
+- 급식 정보 활용을 위한 MCP 서버
+- 평가 루브릭에 따라 두 학교의 급식을 비교하는 멀티 에이전트 워크플로우
 
-| 구성 요소 | 기술 | 역할 |
-| --- | --- | --- |
-| 프론트엔드 | React 및 TypeScript | 학교 검색, 날짜 선택 및 급식 메뉴 표시 |
-| 백엔드 | Python | NEIS API 연동, 입력값 검증 및 응답 데이터 구성 |
-| 실행 환경 | Docker Compose | 프론트엔드와 백엔드의 로컬 오케스트레이션 |
+## 시작하기
 
-예정된 소스 디렉터리 구조는 다음과 같습니다.
+워크숍을 시작하려면 GitHub 및 Azure 계정과 다음 도구가 필요합니다.
 
-```text
-frontend/    React 및 TypeScript 애플리케이션
-backend/     Python API 애플리케이션
-src/         openapi.json을 포함한 공용 명세
-data/        원본 API 문서
-```
+- [GitHub Copilot app](https://gh.io/app)
+- [GitHub Copilot CLI](https://gh.io/copilot-cli)
+- [GitHub CLI](https://gh.io/cli)
+- [Azure CLI](https://aka.ms/az-cli)
+- [Azure Developer CLI](https://aka.ms/azd-cli)
 
-## 개발 환경 요구사항
+이 저장소를 포크하는 대신 템플릿으로 새 저장소를 만든 후 [개발 환경 설정](docs/00-setup.md)의 안내를 따라 진행하세요.
 
-- Git
-- Node.js 22 이상
-- Python 3.12 이상
-- Docker Compose를 포함한 Docker Desktop
+> [!TIP]
+> 바로 시작하려면 [이 템플릿으로 새 저장소를 만드세요](https://github.com/new?template_name=battle-school-lunch-workshop&template_owner=devkimchi).
 
-## 설치
+완성된 애플리케이션을 직접 실행하거나 구현 결과를 비교하려면 [데모 앱 리포지토리](https://github.com/devkimchi/battle-school-lunch)를 참고하세요.
 
-```sh
-git clone https://github.com/justinyoo/battle-school-lunch.git
-cd battle-school-lunch
-```
+## 커리큘럼
 
-프론트엔드와 백엔드의 매니페스트 파일이 생성된 후 로컬 개발 의존성을
-설치합니다.
+| 단계 | 주제                                                                         |
+|------|------------------------------------------------------------------------------|
+| 00   | [개발 환경 설정](docs/00-setup.md)                                           |
+| 01   | [`openapi.json` 명세 생성](docs/01-generate-openapi.md)                      |
+| 02   | [`AGENTS.md` 문서 생성](docs/02-generate-agents-md.md)                       |
+| 03   | [PRD 및 TRD 생성](docs/03-generate-prd-trd.md)                               |
+| 04   | [앱 개발](docs/04-implement-app.md)                                          |
+| 05   | [`AGENTS.md` 문서 수정](docs/05-update-agents-md.md)                         |
+| 06   | [Azure에 앱 배포](docs/06-deplopy-to-azure.md)                               |
+| 07   | [GitHub Actions로 테스트 및 배포 자동화](docs/07-generate-github-actions.md) |
+| 08   | [MCP 서버 구현](docs/08-implement-mcp.md)                                    |
+| 09   | [에이전트 분석 평가 항목 정의](docs/09-define-evaluation-rubric.md)          |
+| 10   | [멀티 에이전트 워크플로우 구현](docs/10-implement-agent-workflow.md)         |
+| 11   | [데이터베이스 연동](docs/11-integrate-database.md) (작성 예정)               |
 
-```sh
-cd frontend
-npm install
+## 저장소 구성
 
-cd ../backend
-python -m venv .venv
-# 사용 중인 셸에서 .venv를 활성화한 후 실행합니다.
-python -m pip install -e ".[dev]"
-```
+| 경로    | 설명                                 |
+|---------|--------------------------------------|
+| `data/` | API 명세 작성에 사용하는 원본 데이터 |
+| `docs/` | 단계별 워크숍 가이드                 |
 
-## 애플리케이션 실행
+프론트엔드, 백엔드 및 배포 관련 소스는 워크숍을 진행하면서 참가자의 저장소에 생성됩니다.
 
-전체 애플리케이션을 빌드하고 실행합니다.
+## 추가 학습 자료
 
-```sh
-docker compose up --build
-```
+- [GitHub Copilot cloud agent 알아보기](https://docs.github.com/copilot/concepts/agents/coding-agent/about-coding-agent)
+- [`AGENTS.md` 작성 가이드와 예제](https://agents.md/)
+- [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Azure Developer CLI 문서](https://learn.microsoft.com/azure/developer/azure-developer-cli/)
+- [GitHub Actions 문서](https://docs.github.com/actions)
+- [Model Context Protocol 소개](https://modelcontextprotocol.io/docs/getting-started/intro)
+- [MCP Inspector](https://github.com/modelcontextprotocol/inspector)
+- [Microsoft Agent Framework](https://aka.ms/agentframework)
 
-프론트엔드와 백엔드의 URL은 애플리케이션 구현 시 `compose.yml`에
-정의합니다.
+## 프로젝트 안내
 
-## 개발
-
-프론트엔드 검사를 실행합니다.
-
-```sh
-cd frontend
-npm run build
-npm test
-```
-
-백엔드 검사를 실행합니다.
-
-```sh
-cd backend
-pytest
-```
-
-프로젝트 구현 작업은 `.github/bootstrap-issues/`의 초기 설정 이슈에서
-관리합니다.
-
--->
-
-## 기여하기
-
-개발 환경 설정 및 Pull Request 안내는
-[CONTRIBUTING.md](CONTRIBUTING.md)를 참고하세요.
-
-## 보안
-
-취약점을 비공개로 신고하려면 [SECURITY.md](SECURITY.md)를 참고하세요.
-
-## 라이선스
-
-이 프로젝트는 [MIT 라이선스](LICENSE)를 따릅니다.
+- 질문이나 도움이 필요하면 [지원 안내](SUPPORT.md)를 확인하세요.
+- 프로젝트에 참여하려면 [기여 가이드](CONTRIBUTING.md)와 [행동 강령](CODE_OF_CONDUCT.md)을 확인하세요.
+- 보안 문제는 [보안 정책](SECURITY.md)에 따라 비공개로 신고해 주세요.
+- 이 프로젝트는 [MIT 라이선스](LICENSE)를 따릅니다.
