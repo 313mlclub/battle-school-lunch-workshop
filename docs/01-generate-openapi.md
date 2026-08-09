@@ -34,9 +34,9 @@
 
 1. 아래와 같이 프롬프트를 입력한 후 엔터키를 누릅니다.
 
-   ```text
-   엑셀파일에 정의되어 있는 모든 엔드포인트를 openapi.json 명세 문서로 변환시켜줘.
-   ```
+    ```text
+    엑셀파일에 정의되어 있는 모든 엔드포인트를 openapi.json 명세 문서로 변환시켜줘.
+    ```
 
 1. 작업이 끝나면 아래와 같이 `openapi.json` 파일이 만들어집니다.
 
@@ -76,4 +76,4 @@
 
 ---
 
-openapi.json` 명세 문서를 생성했습니다. [`AGENTS.md` 문서 생성하기](./02-generate-agents-md.md)로 넘어가세요.
+`openapi.json` 명세 문서를 생성했습니다. [`AGENTS.md` 문서 생성하기](./02-generate-agents-md.md)로 넘어가세요.

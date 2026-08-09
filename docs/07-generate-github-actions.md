@@ -5,7 +5,7 @@ Azure 클라우드에 `azd up` 명령어로 앱을 배포할 수 있게 됐습�
 > [!NOTE]
 > 현재 보이는 스크린샷은 시간이 지나면서 UI 업데이트로 인해 현재 시점과 다를 수 있습니다.
 
-> [!INFO]
+> [!IMPORTANT]
 > [이전 세션](./06-deplopy-to-azure.md)에서 작업했던 터미널을 그대로 활용합니다.
 
 ## GitHub Actions 파이프라인 구성하기
