@@ -56,6 +56,39 @@ NEIS 공개 API를 활용해 초중고 급식 메뉴를 조회하고 AI 에이�
 
 프론트엔드, 백엔드 및 배포 관련 소스는 워크숍을 진행하면서 참가자의 저장소에 생성됩니다.
 
+## 애플리케이션 실행
+
+구현된 앱은 React, Fluent UI, FastAPI로 구성되며 브라우저는 NEIS API를 직접
+호출하지 않습니다.
+
+1. `.env.example`을 `.env`로 복사하고 `NEIS_API_KEY`에
+   [NEIS 교육정보 개방 포털](https://open.neis.go.kr/) 인증키를 입력합니다.
+2. 저장소 루트에서 다음 명령을 실행합니다.
+
+   ```shell
+   docker compose up --build
+   ```
+
+3. `http://localhost:8080`에서 앱을 엽니다. 종료할 때는
+   `docker compose down`을 실행합니다.
+
+로컬에서 두 서비스를 한 번에 실행하려면 Python 3.11 이상과 Node.js 24 이상이
+필요합니다.
+
+```shell
+pwsh ./scripts/start.ps1
+```
+
+macOS와 Linux에서는 Bash 스크립트를 사용합니다.
+
+```shell
+bash ./scripts/start.sh
+```
+
+스크립트는 필요한 의존성이 없을 때만 설치하고 FastAPI와 Vite를 함께
+실행합니다. `Ctrl+C`를 누르면 두 프로세스를 모두 종료합니다. 프론트엔드는
+`http://127.0.0.1:5173`, 백엔드는 `http://127.0.0.1:8000`에서 실행됩니다.
+
 ## 추가 학습 자료
 
 - [GitHub Copilot cloud agent 알아보기](https://docs.github.com/copilot/concepts/agents/coding-agent/about-coding-agent)

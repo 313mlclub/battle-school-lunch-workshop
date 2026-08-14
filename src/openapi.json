@@ -1,0 +1,290 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "급식 배틀 내부 API",
+    "version": "0.1.0",
+    "description": "React 프론트엔드와 FastAPI 백엔드 사이의 안정적인 내부 계약"
+  },
+  "paths": {
+    "/api/schools": {
+      "get": {
+        "operationId": "searchSchools",
+        "summary": "부분 학교명으로 학교 검색",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "검색 결과. 결과가 없으면 빈 배열",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/School"
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/InvalidInput"
+          },
+          "502": {
+            "$ref": "#/components/responses/UpstreamFailure"
+          },
+          "503": {
+            "$ref": "#/components/responses/UpstreamUnavailable"
+          }
+        }
+      }
+    },
+    "/api/schools/{educationOfficeCode}/{schoolCode}/meals": {
+      "get": {
+        "operationId": "getSchoolLunches",
+        "summary": "학교의 날짜별 중식 조회",
+        "parameters": [
+          {
+            "name": "educationOfficeCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9]+$"
+            }
+          },
+          {
+            "name": "schoolCode",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9]+$"
+            }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "학교와 날짜순 중식 목록. 중식이 없으면 meals는 빈 배열",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MealResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/InvalidInput"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "502": {
+            "$ref": "#/components/responses/UpstreamFailure"
+          },
+          "503": {
+            "$ref": "#/components/responses/UpstreamUnavailable"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "School": {
+        "type": "object",
+        "required": [
+          "educationOfficeCode",
+          "schoolCode",
+          "name",
+          "educationOfficeName",
+          "location",
+          "schoolType"
+        ],
+        "properties": {
+          "educationOfficeCode": {
+            "type": "string"
+          },
+          "schoolCode": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "educationOfficeName": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "schoolType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "Meal": {
+        "type": "object",
+        "required": [
+          "date",
+          "mealType",
+          "menu",
+          "calories",
+          "nutrition",
+          "origin",
+          "headcount"
+        ],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "mealType": {
+            "type": "string"
+          },
+          "menu": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "calories": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nutrition": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "origin": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "headcount": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        }
+      },
+      "MealResponse": {
+        "type": "object",
+        "required": [
+          "school",
+          "meals"
+        ],
+        "properties": {
+          "school": {
+            "$ref": "#/components/schemas/School"
+          },
+          "meals": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Meal"
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {
+      "InvalidInput": {
+        "description": "입력값 오류",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "대상을 찾을 수 없음",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "UpstreamFailure": {
+        "description": "NEIS 인증, HTTP 또는 응답 형식 오류",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "UpstreamUnavailable": {
+        "description": "NEIS 요청 제한 또는 시간 초과",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}

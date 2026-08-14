@@ -1,0 +1,1 @@
+"""School lunch API package."""
